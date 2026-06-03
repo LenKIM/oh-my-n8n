@@ -1,0 +1,17 @@
+{
+  "name": "oh-my-n8n",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A multi-agent Claude Code harness for n8n workflow authoring & operations",
+  "scripts": {
+    "extract-catalog": "node scripts/extract-node-catalog.mjs",
+    "validate": "node scripts/validate-workflow.mjs",
+    "sync-plugins": "node scripts/sync-plugins.mjs"
+  },
+  "devDependencies": {
+    "n8n-workflow": "^2.15.0",
+    "n8n-core": "^2.15.0",
+    "xlsx": "^0.18.5",
+    "@langchain/core": "^0.3.0"
+  }
+}

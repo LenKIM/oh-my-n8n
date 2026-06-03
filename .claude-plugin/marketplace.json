@@ -1,0 +1,19 @@
+{
+  "name": "oh-my-n8n",
+  "description": "n8n workflow authoring & operations harness for Claude Code",
+  "owner": {
+    "name": "oh-my-n8n contributors"
+  },
+  "plugins": [
+    {
+      "name": "oh-my-n8n",
+      "description": "n8n workflow authoring & operations harness. After install, run /oh-my-n8n:omn-setup to bootstrap the workspace.",
+      "category": "automation",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/<your-org>/oh-my-n8n.git"
+      },
+      "homepage": "https://github.com/<your-org>/oh-my-n8n"
+    }
+  ]
+}

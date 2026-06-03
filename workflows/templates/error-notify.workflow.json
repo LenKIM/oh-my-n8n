@@ -1,0 +1,121 @@
+{
+  "name": "error-notify",
+  "nodes": [
+    {
+      "id": "trigger",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [-160, 0],
+      "parameters": {}
+    },
+    {
+      "id": "format",
+      "name": "Format Message",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [80, 0],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "wf-name",
+              "name": "workflowName",
+              "value": "={{ $json.workflow.name }}",
+              "type": "string"
+            },
+            {
+              "id": "wf-id",
+              "name": "workflowId",
+              "value": "={{ $json.workflow.id }}",
+              "type": "string"
+            },
+            {
+              "id": "exec-url",
+              "name": "executionUrl",
+              "value": "={{ $json.execution.url }}",
+              "type": "string"
+            },
+            {
+              "id": "err-node",
+              "name": "errorNode",
+              "value": "={{ $json.execution.error.node.name || 'unknown' }}",
+              "type": "string"
+            },
+            {
+              "id": "err-msg",
+              "name": "errorMessage",
+              "value": "={{ $json.execution.error.message }}",
+              "type": "string"
+            },
+            {
+              "id": "err-details",
+              "name": "errorDetails",
+              "value": "={{ $json.execution.error.context?.metadata?.details || $json.execution.error.cause || '' }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "slack",
+      "name": "Send Slack Alert",
+      "type": "n8n-nodes-base.slack",
+      "typeVersion": 2.4,
+      "position": [336, 0],
+      "parameters": {
+        "select": "channel",
+        "channelId": {
+          "__rl": true,
+          "value": "#REPLACE-WITH-YOUR-ALERT-CHANNEL",
+          "mode": "name"
+        },
+        "text": "=:rotating_light: *워크플로 에러 발생*\n\n*워크플로*: {{ $json.workflowName }}\n*실패 노드*: `{{ $json.errorNode }}`\n*메시지*: {{ $json.errorMessage }}\n*상세*: {{ $json.errorDetails }}\n\n<{{ $json.executionUrl }}|실행 로그 열기>",
+        "otherOptions": {}
+      },
+      "credentials": {
+        "slackApi": {
+          "id": "REPLACE_WITH_SLACK_CRED_ID",
+          "name": "REPLACE_WITH_SLACK_CRED_NAME"
+        }
+      }
+    },
+    {
+      "id": "note",
+      "name": "Usage",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [-200, -260],
+      "parameters": {
+        "width": 720,
+        "height": 220,
+        "content": "## error-notify (Error Workflow 템플릿)\n\n**사용법**\n1. 이 워크플로를 import → activate.\n2. `Send Slack Alert` 노드의 `channelId` 를 팀 알림 채널로 변경.\n3. `slackApi` credential 을 팀 봇 토큰으로 교체.\n4. 알림을 받고 싶은 워크플로의 **Settings → Error Workflow** 에서 본 워크플로를 지정.\n\n**입력 컨텍스트** (`Error Trigger` payload)\n- `$json.workflow.{id,name}` — 실패한 워크플로\n- `$json.execution.{id,url,error}` — 실행/에러 정보\n- `$json.execution.error.node.name` — 실패 노드\n\n도메인별 필터(특정 에러 무시 등)가 필요하면 `Format Message` 뒤에 `IF` 를 추가해 가지를 분기하세요."
+      }
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          { "node": "Format Message", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Format Message": {
+      "main": [
+        [
+          { "node": "Send Slack Alert", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "executionTimeout": 300,
+    "saveExecutionProgress": true
+  },
+  "staticData": null,
+  "tags": []
+}

@@ -1,0 +1,19 @@
+{
+  "name": "@oh-my-n8n/custom-nodes",
+  "version": "0.1.0",
+  "private": true,
+  "description": "조직 공유 n8n 커스텀 노드 모노레포",
+  "workspaces": [
+    "nodes/*"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "lint": "eslint nodes --ext .ts",
+    "test": "echo \"add per-node tests\" && exit 0"
+  },
+  "devDependencies": {
+    "n8n-workflow": "^2.15.0",
+    "n8n-core": "^2.15.0",
+    "typescript": "^5.4.0"
+  }
+}

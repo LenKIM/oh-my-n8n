@@ -1,0 +1,31 @@
+# 로컬 n8n 개발 인스턴스.
+# - custom-nodes/ 를 컨테이너의 ~/.n8n/custom 으로 마운트하여 커스텀 노드 즉시 로드.
+# - plugins/plugins.yaml 에 선언된 커뮤니티 노드는 Dockerfile.n8n 빌드 단계에서 사전 설치.
+
+services:
+  n8n:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.n8n
+    image: oh-my-n8n/n8n:local
+    container_name: oh-my-n8n
+    restart: unless-stopped
+    ports:
+      - "15679:5678"
+    environment:
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=http://localhost:15679/
+      - GENERIC_TIMEZONE=Asia/Seoul
+      - N8N_CUSTOM_EXTENSIONS=/home/node/.n8n/custom
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_PERSONALIZATION_ENABLED=false
+    volumes:
+      - n8n_data:/home/node/.n8n
+      # prebuilt 커스텀 노드 — 단일 디렉토리에 .node.js + .credentials.js 평면 배치
+      - ../custom-nodes/dist-prebuilt:/home/node/.n8n/custom:ro
+      - ../workflows:/workflows:ro
+
+volumes:
+  n8n_data:

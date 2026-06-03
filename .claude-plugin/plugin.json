@@ -1,0 +1,11 @@
+{
+  "name": "oh-my-n8n",
+  "version": "0.1.0",
+  "description": "A multi-agent Claude Code harness for n8n — author, validate, and deploy workflows; mirror your organization's prebuilt custom nodes; manage community plugins declaratively.",
+  "author": {
+    "name": "oh-my-n8n contributors"
+  },
+  "homepage": "https://github.com/<your-org>/oh-my-n8n",
+  "repository": "https://github.com/<your-org>/oh-my-n8n.git",
+  "keywords": ["n8n", "workflow", "automation", "claude-code", "harness"]
+}

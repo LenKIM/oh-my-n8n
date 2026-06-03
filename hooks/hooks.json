@@ -1,0 +1,13 @@
+{
+  "PostToolUse": [
+    {
+      "matcher": "Write|Edit|MultiEdit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "node \"${OMN_WORKSPACE:-$HOME/.oh-my-n8n}/scripts/hook-validate-on-write.mjs\""
+        }
+      ]
+    }
+  ]
+}

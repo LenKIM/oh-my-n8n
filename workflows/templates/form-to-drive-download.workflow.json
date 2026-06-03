@@ -1,0 +1,105 @@
+{
+  "name": "Google Drive 파일 다운로드 (Form Trigger)",
+  "nodes": [
+    {
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "name": "On form submission",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [240, 300],
+      "parameters": {
+        "formTitle": "Google Drive 파일 다운로드",
+        "formDescription": "검색할 파일 이름을 입력하세요. 지정된 폴더에서 정확히 일치하는 파일을 다운로드합니다.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "파일 이름",
+              "fieldType": "text",
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "name": "Search file in folder",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [480, 300],
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "=name = '{{ $json[\"파일 이름\"] }}' and 'YOUR_GOOGLE_DRIVE_FOLDER_ID' in parents and trashed = false",
+        "returnAll": false,
+        "limit": 1,
+        "filter": {
+          "whatToSearch": "files",
+          "folderId": {
+            "__rl": true,
+            "mode": "id",
+            "value": "YOUR_GOOGLE_DRIVE_FOLDER_ID"
+          }
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_ME",
+          "name": "Google Drive OAuth2"
+        }
+      }
+    },
+    {
+      "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "name": "Download file",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [720, 300],
+      "parameters": {
+        "resource": "file",
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "REPLACE_ME",
+          "name": "Google Drive OAuth2"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Search file in folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search file in folder": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}

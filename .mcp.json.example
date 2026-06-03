@@ -1,0 +1,9 @@
+{
+  "//": "Optional: connect an n8n template search MCP server. Copy this file to .mcp.json and replace the URL with your own template service endpoint.",
+  "mcpServers": {
+    "n8n-templates": {
+      "type": "http",
+      "url": "https://<your-template-service>/mcp"
+    }
+  }
+}

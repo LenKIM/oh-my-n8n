@@ -1,0 +1,14 @@
+# Custom n8n image with whitelisted community plugins pre-installed.
+# Plugins are sourced from ../plugins/plugins.yaml via scripts/sync-plugins.mjs.
+
+ARG N8N_VERSION=2.15.0
+FROM n8nio/n8n:${N8N_VERSION}
+
+USER root
+
+# 커뮤니티 플러그인은 빌드 컨텍스트에서 plugins/install.sh 로 변환되어 주입됨.
+# (sync-plugins.mjs 가 plugins.yaml → install.sh 생성)
+COPY plugins/install.sh /tmp/install.sh
+RUN chmod +x /tmp/install.sh && /tmp/install.sh && rm /tmp/install.sh
+
+USER node

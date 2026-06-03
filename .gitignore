@@ -1,0 +1,40 @@
+# dependencies
+node_modules/
+custom-nodes/*/node_modules/
+
+# build artifacts (TS workspaces)
+dist/
+custom-nodes/*/dist/
+
+# logs / runtime
+*.log
+.claude/state/
+schemas/cache/
+
+# env / secrets
+.env
+.env.local
+.env.*.local
+.mcp.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# editor
+.idea/
+.vscode/
+*.swp
+
+# docker volume mount points (local data)
+docker/n8n-data/
+
+# locally authored workflows (examples/templates are tracked)
+/workflows/*.workflow.json
+
+# generated catalogs (extracted by setup/doctor)
+schemas/internal-nodes.json
+schemas/n8n-core-*.schema.json
+
+# your organization's prebuilt custom node mirror (kept local, never committed)
+custom-nodes/dist-prebuilt/

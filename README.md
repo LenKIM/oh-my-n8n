@@ -1,6 +1,26 @@
-# oh-my-n8n
+<div align="center">
+
+# 🧩 oh-my-n8n
+
+### Ship correct n8n workflows — written by one agent, verified by another.
+
+**Describe what you want in plain language. A multi-agent Claude Code harness authors the workflow,
+an independent reviewer tears it apart, and nothing ships until it validates against your real node catalog.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![n8n](https://img.shields.io/badge/n8n-2.15.0-EA4B71?logo=n8n&logoColor=white)](https://n8n.io)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-D97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
+[![Agents](https://img.shields.io/badge/agents-7-blue.svg)](#the-agents)
+[![Skills](https://img.shields.io/badge/skills-12-blue.svg)](#daily-use)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/LenKIM/oh-my-n8n/pulls)
 
 [English](./README.md) · [한국어](./README.ko.md)
+
+[**Install**](#install) · [**How it works**](#how-it-works) · [**Daily use**](#daily-use)
+
+</div>
+
+---
 
 A multi-agent Claude Code harness for **n8n** — authoring, validating, and operating workflows.
 It adapts the multi-agent orchestration patterns of `oh-my-claudecode` (OMC) to the n8n domain.

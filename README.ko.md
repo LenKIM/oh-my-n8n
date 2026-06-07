@@ -1,6 +1,26 @@
-# oh-my-n8n
+<div align="center">
+
+# 🧩 oh-my-n8n
+
+### 정확한 n8n 워크플로를 만든다 — 한 에이전트가 작성하고, 다른 에이전트가 검증한다.
+
+**원하는 것을 자연어로 설명하면, 멀티 에이전트 Claude Code 하네스가 워크플로를 작성하고,
+독립된 리뷰어가 그것을 검증하며, 실제 노드 카탈로그에 대해 통과하기 전까지 아무것도 배포되지 않습니다.**
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+[![n8n](https://img.shields.io/badge/n8n-2.15.0-EA4B71?logo=n8n&logoColor=white)](https://n8n.io)
+[![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-D97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
+[![Agents](https://img.shields.io/badge/agents-7-blue.svg)](#에이전트)
+[![Skills](https://img.shields.io/badge/skills-12-blue.svg)](#일상-사용)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/LenKIM/oh-my-n8n/pulls)
 
 [English](./README.md) · [한국어](./README.ko.md)
+
+[**설치**](#설치) · [**동작 방식**](#어떻게-동작하는가) · [**일상 사용**](#일상-사용)
+
+</div>
+
+---
 
 **n8n** 워크플로 작성·검증·운영을 위한 멀티 에이전트 Claude Code 하네스입니다.
 `oh-my-claudecode`(OMC) 의 멀티 에이전트 오케스트레이션 패턴을 n8n 도메인에 특화시켰습니다.

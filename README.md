@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./docs/assets/social-preview.png" alt="oh-my-n8n — a multi-agent Claude Code harness for n8n" width="100%" />
+
 # 🧩 oh-my-n8n
 
 ### Ship correct n8n workflows — written by one agent, verified by another.

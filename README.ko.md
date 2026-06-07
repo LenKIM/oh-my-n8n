@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="./docs/assets/social-preview.png" alt="oh-my-n8n — n8n 을 위한 멀티 에이전트 Claude Code 하네스" width="100%" />
+
 # 🧩 oh-my-n8n
 
 ### 정확한 n8n 워크플로를 만든다 — 한 에이전트가 작성하고, 다른 에이전트가 검증한다.

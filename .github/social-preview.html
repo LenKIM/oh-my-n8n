@@ -1,0 +1,123 @@
+<!doctype html>
+<!--
+  oh-my-n8n social preview (GitHub Open Graph card).
+  Render to PNG with:
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" \
+      --headless --disable-gpu --force-device-scale-factor=2 \
+      --screenshot=docs/assets/social-preview.png \
+      --window-size=1280,640 --hide-scrollbars \
+      "file://$PWD/.github/social-preview.html"
+-->
+<html>
+<head>
+<meta charset="utf-8" />
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1280px; height: 640px; overflow: hidden; }
+  body {
+    font-family: -apple-system, "SF Pro Display", "Helvetica Neue", "Segoe UI",
+                 "Apple SD Gothic Neo", Arial, sans-serif;
+    background:
+      radial-gradient(1100px 600px at 88% 12%, rgba(234, 75, 113, 0.22), transparent 60%),
+      radial-gradient(900px 700px at 8% 96%, rgba(217, 119, 87, 0.20), transparent 60%),
+      linear-gradient(140deg, #0b1020 0%, #131826 45%, #1a1320 100%);
+    color: #f4f6fb;
+    position: relative;
+  }
+
+  /* subtle node-graph dots in the background */
+  .grid {
+    position: absolute; inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.05) 1.5px, transparent 1.5px);
+    background-size: 38px 38px;
+    mask-image: linear-gradient(120deg, transparent 30%, black 100%);
+  }
+
+  .frame {
+    position: relative;
+    height: 100%;
+    padding: 76px 84px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .top { display: flex; align-items: center; gap: 18px; }
+  .logo { font-size: 60px; line-height: 1; filter: drop-shadow(0 6px 18px rgba(234,75,113,.45)); }
+  .wordmark {
+    font-size: 58px; font-weight: 800; letter-spacing: -1.5px;
+    background: linear-gradient(92deg, #ffffff 0%, #ffd9e2 38%, #ffcaa8 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .accent-bar {
+    margin-top: 26px; height: 6px; width: 248px; border-radius: 6px;
+    background: linear-gradient(90deg, #EA4B71 0%, #D97757 100%);
+    box-shadow: 0 4px 22px rgba(234,75,113,.5);
+  }
+
+  .center { margin-top: -8px; }
+  .headline {
+    font-size: 52px; font-weight: 750; line-height: 1.16; letter-spacing: -0.8px;
+    max-width: 1000px;
+  }
+  .headline .hi { color: #ff8fab; }
+  .headline .hi2 { color: #ffb38a; }
+  .sub {
+    margin-top: 22px; font-size: 25px; line-height: 1.5; font-weight: 400;
+    color: #aeb6c8; max-width: 940px;
+  }
+
+  .badges { display: flex; gap: 14px; flex-wrap: wrap; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 12px 20px; border-radius: 999px;
+    font-size: 21px; font-weight: 600;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #e7ebf4;
+    backdrop-filter: blur(6px);
+  }
+  .badge .dot { width: 11px; height: 11px; border-radius: 50%; }
+  .dot.pink { background: #EA4B71; }
+  .dot.orange { background: #D97757; }
+  .dot.green { background: #4ade80; }
+  .dot.blue { background: #60a5fa; }
+
+  .repo {
+    position: absolute; bottom: 30px; right: 84px;
+    font-size: 20px; color: #6b7488; font-weight: 500; letter-spacing: 0.2px;
+  }
+</style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="frame">
+    <div>
+      <div class="top">
+        <div class="logo">🧩</div>
+        <div class="wordmark">oh-my-n8n</div>
+      </div>
+      <div class="accent-bar"></div>
+    </div>
+
+    <div class="center">
+      <div class="headline">
+        Ship correct n8n workflows —<br/>
+        <span class="hi">written by one agent,</span> <span class="hi2">verified by another.</span>
+      </div>
+      <div class="sub">
+        A multi-agent Claude Code harness. Describe it in plain language; nothing ships
+        until it validates against your real node catalog.
+      </div>
+    </div>
+
+    <div class="badges">
+      <span class="badge"><span class="dot green"></span>MIT</span>
+      <span class="badge"><span class="dot pink"></span>n8n 2.15.0</span>
+      <span class="badge"><span class="dot orange"></span>Claude Code plugin</span>
+      <span class="badge"><span class="dot blue"></span>7 agents · 12 skills</span>
+    </div>
+  </div>
+  <div class="repo">github.com/LenKIM/oh-my-n8n</div>
+</body>
+</html>

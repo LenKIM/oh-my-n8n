@@ -15,6 +15,41 @@ catalogs, docker, `node_modules`) lives in a **workspace** on your machine. The 
 - **Workflow authoring agent** — requirements → validated JSON → dry-run → deploy.
 - **Version migration agent** — handles breaking changes automatically when you upgrade n8n.
 
+## How it works
+
+oh-my-n8n is not a docker wrapper — it's a **multi-agent harness** that splits n8n work across
+seven specialized sub-agents and enforces a *write / verify separation* so no agent ever approves
+its own output.
+
+### The agents
+
+Each agent runs in its own context with a model picked for the job (lookups are cheap, design and
+review are not):
+
+| Agent | Model | Role |
+|---|---|---|
+| `n8n-workflow-author` | sonnet | Natural-language requirements → workflow JSON. Uses **only** registered nodes (`custom-nodes/`, `plugins.yaml`); secrets are credential references, never literals. |
+| `n8n-workflow-reviewer` | opus | Independently re-checks the author's JSON in a **separate context** — schema fit, secret leaks, expression syntax, node registration, single-trigger rule, dead nodes. The author cannot self-approve. |
+| `n8n-node-developer` | opus | Authors/edits the organization's TypeScript custom nodes against the `INodeType` standard. |
+| `n8n-debugger` | sonnet | Takes an execution ID / error stack trace, pinpoints the failing node, proposes a fix. |
+| `n8n-migrator` | opus | Detects and auto-migrates breaking changes (typeVersion bumps, deprecated nodes) on n8n upgrades. |
+| `n8n-ops` | sonnet | docker/k8s lifecycle, health checks, backup/restore, log collection. |
+| `explore` | haiku | Fast read-only catalog/schema/example lookups. |
+
+### What keeps workflows correct
+
+- **Write / verify separation** — authoring and review are always separate passes. Self-approval in
+  one context is forbidden (the core OMC orchestration pattern, specialized for n8n).
+- **Catalog-grounded nodes** — every node in a generated workflow must exist in the core-node
+  catalog (`schemas/n8n-core-latest.schema.json`, 502 nodes) or your custom-node mirror.
+  Unregistered nodes are rejected, and the harness points you to `n8n-pkg-add` / `n8n-new-node`.
+- **No hardcoded secrets** — tokens are only ever n8n credential references; a regex scan blocks
+  literals before a workflow is considered done.
+- **Automatic validation hook** — a PostToolUse hook runs `validate-workflow.mjs` whenever a
+  `*.workflow.json` is written/edited, and injects the result back so failures are fixed immediately.
+- **Evidence before "done"** — no completion is declared until `validate-workflow.mjs` passes,
+  exactly one trigger exists, and (on deploy) a dry-run succeeds on a live instance.
+
 ## Install
 
 ### 1. Prerequisites

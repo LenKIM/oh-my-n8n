@@ -71,7 +71,7 @@ review are not):
 Run Claude Code, then type in the Claude prompt:
 
 ```
-/plugin marketplace add https://github.com/<your-org>/oh-my-n8n.git
+/plugin marketplace add https://github.com/LenKIM/oh-my-n8n.git
 ```
 
 > If you have it cloned locally, a path also works:

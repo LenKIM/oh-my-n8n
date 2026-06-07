@@ -26,7 +26,7 @@ oh-my-n8n 워크스페이스를 사용자 머신에 준비한다.
 ```bash
 WS="${OMN_WORKSPACE:-$HOME/.oh-my-n8n}"
 if [ ! -d "$WS/.git" ]; then
-  git clone https://github.com/<your-org>/oh-my-n8n.git "$WS"
+  git clone https://github.com/LenKIM/oh-my-n8n.git "$WS"
 else
   (cd "$WS" && git pull --ff-only)
 fi

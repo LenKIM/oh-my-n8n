@@ -11,9 +11,9 @@
       "category": "automation",
       "source": {
         "source": "url",
-        "url": "https://github.com/<your-org>/oh-my-n8n.git"
+        "url": "https://github.com/LenKIM/oh-my-n8n.git"
       },
-      "homepage": "https://github.com/<your-org>/oh-my-n8n"
+      "homepage": "https://github.com/LenKIM/oh-my-n8n"
     }
   ]
 }

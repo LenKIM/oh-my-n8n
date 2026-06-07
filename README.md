@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./docs/assets/social-preview.png" alt="oh-my-n8n — a multi-agent Claude Code harness for n8n" width="100%" />
+<img src="./docs/assets/social-preview.jpg" alt="oh-my-n8n — a multi-agent Claude Code harness for n8n" width="100%" />
 
 # 🧩 oh-my-n8n
 
@@ -10,7 +10,7 @@
 an independent reviewer tears it apart, and nothing ships until it validates against your real node catalog.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![n8n](https://img.shields.io/badge/n8n-2.15.0-EA4B71?logo=n8n&logoColor=white)](https://n8n.io)
+[![n8n](https://img.shields.io/badge/n8n-EA4B71?logo=n8n&logoColor=white)](https://n8n.io)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-D97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![Agents](https://img.shields.io/badge/agents-7-blue.svg)](#the-agents)
 [![Skills](https://img.shields.io/badge/skills-12-blue.svg)](#daily-use)

@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./docs/assets/social-preview.png" alt="oh-my-n8n — n8n 을 위한 멀티 에이전트 Claude Code 하네스" width="100%" />
+<img src="./docs/assets/social-preview.jpg" alt="oh-my-n8n — n8n 을 위한 멀티 에이전트 Claude Code 하네스" width="100%" />
 
 # 🧩 oh-my-n8n
 
@@ -10,7 +10,7 @@
 독립된 리뷰어가 그것을 검증하며, 실제 노드 카탈로그에 대해 통과하기 전까지 아무것도 배포되지 않습니다.**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
-[![n8n](https://img.shields.io/badge/n8n-2.15.0-EA4B71?logo=n8n&logoColor=white)](https://n8n.io)
+[![n8n](https://img.shields.io/badge/n8n-EA4B71?logo=n8n&logoColor=white)](https://n8n.io)
 [![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin-D97757?logo=anthropic&logoColor=white)](https://claude.com/claude-code)
 [![Agents](https://img.shields.io/badge/agents-7-blue.svg)](#에이전트)
 [![Skills](https://img.shields.io/badge/skills-12-blue.svg)](#일상-사용)

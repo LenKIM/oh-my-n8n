@@ -12,7 +12,10 @@ catalogs, docker, `node_modules`) lives in a **workspace** on your machine. The 
 ## What it does
 
 - **Custom-node mirror** (`custom-nodes/dist-prebuilt/`) — drop your organization's prebuilt n8n
-  nodes here; docker mounts them so they load instantly. (Kept local — never committed.)
+  nodes here and docker mounts them so they load instantly. The setup/doctor skills (or
+  `npm run extract-catalog`) then read those `.node.js` files into a catalog
+  (`schemas/internal-nodes.json`), so **when you author a workflow, oh-my-n8n sees your custom
+  nodes and uses them too** — same as core nodes. (Kept local — never committed.)
 - **Declarative community plugins** (`plugins/plugins.yaml`) — whitelist + lockfile.
 - **Workflow authoring agent** — requirements → validated JSON → dry-run → deploy.
 - **Version migration agent** — handles breaking changes automatically when you upgrade n8n.
@@ -43,8 +46,10 @@ review are not):
 - **Write / verify separation** — authoring and review are always separate passes. Self-approval in
   one context is forbidden (the core OMC orchestration pattern, specialized for n8n).
 - **Catalog-grounded nodes** — every node in a generated workflow must exist in the core-node
-  catalog (`schemas/n8n-core-latest.schema.json`, 502 nodes) or your custom-node mirror.
-  Unregistered nodes are rejected, and the harness points you to `n8n-pkg-add` / `n8n-new-node`.
+  catalog (`schemas/n8n-core-latest.schema.json`, 502 nodes) or the custom-node catalog extracted
+  from your mirror (`schemas/internal-nodes.json`). The author wires custom nodes in using their
+  exact `fullType`; unregistered nodes are rejected, and the harness points you to `n8n-pkg-add` /
+  `n8n-new-node`.
 - **No hardcoded secrets** — tokens are only ever n8n credential references; a regex scan blocks
   literals before a workflow is considered done.
 - **Automatic validation hook** — a PostToolUse hook runs `validate-workflow.mjs` whenever a

@@ -1,5 +1,7 @@
 # oh-my-n8n
 
+[English](./README.md) · [한국어](./README.ko.md)
+
 A multi-agent Claude Code harness for **n8n** — authoring, validating, and operating workflows.
 It adapts the multi-agent orchestration patterns of `oh-my-claudecode` (OMC) to the n8n domain.
 

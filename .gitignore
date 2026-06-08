@@ -38,3 +38,6 @@ schemas/n8n-core-*.schema.json
 
 # your organization's prebuilt custom node mirror (kept local, never committed)
 custom-nodes/dist-prebuilt/
+
+# local-only promo drafts (not part of the project)
+reddit-posts.md
